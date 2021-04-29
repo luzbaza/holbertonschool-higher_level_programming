@@ -7,4 +7,3 @@ if __name__ == "__main__":
     for i, s in enumerate(argv):
         if i > 0:
             print("{:d}: {:s}".format(i, s))
-sss
