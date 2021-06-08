@@ -70,12 +70,16 @@ class Rectangle(Base):
 
     def display(self):
         """ hat prints in stdout the Rectangle """
-        for i in range(self.__height):
-            for j in range(self.__width):
+        for row in range(self.__y):
+            print()
+        for row in range(self.__height):
+            for column in range(self.__x):
+                print(" ", end="")
+            for column in range(self.__width):
                 print("#", end="")
             print()
 
     def __str__(self):
         """ method so that it returns Rectangle """
         return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(
-            self.id, self.__x, self.__y, self.__width, self.__height)
+            self.id, self.__x, self.__y, self.__width, self.__heigh)
