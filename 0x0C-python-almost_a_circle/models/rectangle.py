@@ -82,4 +82,10 @@ class Rectangle(Base):
     def __str__(self):
         """ method so that it returns Rectangle """
         return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(
-            self.id, self.__x, self.__y, self.__width, self.__heigh)
+            self.id, self.__x, self.__y, self.__width, self.__height)
+
+    def update(self, *args):
+        """ Update the class """
+        atri = ["id", "width", "height", "x", "y"]
+        for posi in range(len(args)):
+            setattr(self, atri[posi], args[posi])
