@@ -84,8 +84,21 @@ class Rectangle(Base):
         return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(
             self.id, self.__x, self.__y, self.__width, self.__height)
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """ Update the class """
-        atri = ["id", "width", "height", "x", "y"]
-        for posi in range(len(args)):
-            setattr(self, atri[posi], args[posi])
+        if len(args) > 0:
+            atri = ["id", "width", "height", "x", "y"]
+            for posi in range(len(args)):
+                setattr(self, atri[posi], args[posi])
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
+
+    def to_dictionary(self):
+        """ returns to dictionary """
+        self.__dict__
+        new_dict = {}
+        for key in self.__dict__:
+            new_key = key.replace("_Rectangle__", "")
+            new_dict[new_key] = self.__dict__[key]
+        return new_dict
