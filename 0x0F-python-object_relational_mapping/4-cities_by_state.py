@@ -10,8 +10,8 @@ if __name__ == "__main__":
     cur = conn.cursor()
     cur.execute(
         "SELECT cities.id, cities.name, states.name FROM cities" +
-        "INNER JOIN states ON cities.states_id = states.id ORDER BY" +
-        "cities.id ASC")
+        " INNER JOIN states ON cities.states_id = states.id ORDER BY" +
+        " cities.id ASC")
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
