@@ -3,27 +3,27 @@
 
 const request = require('request');
 const url = process.argv[2];
-let resultlist = [];
+let resultList = [];
 let i = 0;
-const countdict = {};
+const countDict = {};
 let key = '';
 
 request(url, function (error, response, body) {
   if (error) {
     console.log(error);
   } else {
-    resultlist = JSON.parse(body);
-    for (i = 0; i < resultlist.lenght; i++) {
-      key = resultlist[i].userId;
-      if (resultlist[i].comoleted === true) {
-        if (!countdict[key]) {
-          countdict[key] = 1;
+    resultList = JSON.parse(body);
+    for (i = 0; i < resultList.lenght; i++) {
+      key = resultList[i].userId;
+      if (resultList[i].comoleted === true) {
+        if (!countDict[key]) {
+          countDict[key] = 1;
         } else {
-          countdict[key] += 1;
+          countDict[key] += 1;
         }
       }
     }
-    console.log(countdict);
+    console.log(countDict);
   }
 })
 ;
