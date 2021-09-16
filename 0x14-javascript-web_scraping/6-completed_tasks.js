@@ -2,28 +2,20 @@
 // script that computes the number of tasks completed by user id.
 
 const request = require('request');
-const url = process.argv[2];
-let resultList = [];
-let i = 0;
-const countDict = {};
-let key = '';
 
-request(url, function (error, response, body) {
+request.get(process.argv[2], function (error, response, body) {
   if (error) {
-    console.log(error);
-  } else {
-    resultList = JSON.parse(body);
-    for (i = 0; i < resultList.lenght; i++) {
-      key = resultList[i].userId;
-      if (resultList[i].comoleted === true) {
-        if (!countDict[key]) {
-          countDict[key] = 1;
-        } else {
-          countDict[key] += 1;
-        }
+    console.error(error);
+  }
+  const completeTask = {};
+  for (const task of JSON.parse(body)) {
+    if (task.completed === true) {
+      if (task.userId in completeTask) {
+        completeTask[task.userId] += 1;
+      } else {
+        completeTask[task.userId] = 1;
       }
     }
-    console.log(countDict);
   }
-})
-;
+  console.log(completeTask);
+});
