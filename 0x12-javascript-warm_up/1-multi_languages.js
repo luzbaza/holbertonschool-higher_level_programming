@@ -2,6 +2,6 @@
 
 const lenguages = 'C is fun \n' +
 'python is cool \n' +
-'JavaScript is amazing \n';
+'JavaScript is amazing';
 
 console.log(lenguages);
